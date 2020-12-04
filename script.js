@@ -1,4 +1,5 @@
 const damageRange = 0.3;
+      criticalHitRate = 0.1;
 let logIndex = 0;
 
 const playerData = {
@@ -10,25 +11,25 @@ const playerData = {
 
 const enemiesData = [
   {
-    name: "おじさん",
+    name: "サラリーマン",
     hp: 50,
     attack: 4,
     defence: 1
   },
   {
-    name: "kids",
+    name: "少年A",
     hp: 60,
     attack: 5,
-    defence: 2
+    defence: 1
   },
   {
-    name: "メンヘラ",
+    name: "カノジョ",
     hp: 30,
     attack: 15,
     defence: 1
   },
   {
-    name: "おばちゃん",
+    name: "近所のおばちゃん",
     hp: 100,
     attack: 5,
     defence: 2
@@ -79,12 +80,16 @@ document.getElementById("attack").addEventListener("click", function() {
   const playerName = '<span style="color: blue;">' + playerData["name"] + "</span>";
         enemyName = '<span style="color: red;">' + enemyData["name"] + "</span>";
 
-
-  const playerDamage = damageCalculation(playerData["attack"], enemyData["defence"]);
+  let playerDamage = damageCalculation(playerData["attack"], enemyData["defence"]);
+  if (Math.random() < criticalHitRate) {
+    playerDamage *= 2;
+    insertLog(playerName + "の攻撃！クリティカル！！" + enemyName + "に" + playerDamage + "のダメージ！");
+  } else {
+    insertLog(playerName + "の攻撃！" + enemyName + "に" + playerDamage + "のダメージ！");
+  }
   enemyData["hp"] -=  playerDamage;
   insertText("curenntEnemyHp", enemyData["hp"]);
   document.getElementById("curenntEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%";
-  insertLog(playerName + "の攻撃！" + enemyName + "に" + playerDamage + "のダメージ！");
 
   if (enemyData["hp"] <= 0) {
     alert("Win！");
@@ -96,11 +101,17 @@ document.getElementById("attack").addEventListener("click", function() {
   }
 
   if (!victory) {
-    const enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
+    let enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
+    if (Math.random() < criticalHitRate) {
+      enemyDamage *= 2;
+      insertLog(enemyName + "の攻撃！クリティカル！！" + playerName + "に" + enemyDamage + "のダメージ！");
+    } else {
+      insertLog(enemyName + "の攻撃！" + playerName + "に" + enemyDamage + "のダメージ！");
+
+    }
     playerData["hp"] -= enemyDamage;
     insertText("curenntPlayerHp", playerData["hp"]);
     document.getElementById("curenntPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"] * 100) + "%";
-    insertLog(enemyName + "の攻撃！" + playerName + "に" + enemyDamage + "のダメージ！");
 
     if (playerData["hp"] <= 0) {
       alert("Lose...");
