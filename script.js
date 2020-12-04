@@ -14,6 +14,9 @@ const enemyData = {
   deffence: 1
 }
 
+playerData["maxHp"] = playerData["hp"]
+enemyData["maxHp"] = enemyData["hp"]
+
 function insertText(id, text) {
   document.getElementById(id).textContent = text;
 }
@@ -50,12 +53,17 @@ document.getElementById("attack").addEventListener("click", function() {
   insertText("curenntEnemyHp", enemyData["hp"]);
   insertText("curenntPlayerHp", playerData["hp"]);
 
+  document.getElementById("curenntEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%";
+  document.getElementById("curenntPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"] * 100) + "%";;
+
   if (enemyData["hp"] <= 0) {
     alert("Win！");
     endGame = true;
 
     enemyData["hp"] = 0;
     insertText("curenntEnemyHp", enemyData["hp"]);
+    document.getElementById("curenntEnemyHpGaugeValue").style.width = "0%";
+
 
   } else if (playerData["hp"] <= 0) {
     alert("Lose...");
@@ -63,6 +71,7 @@ document.getElementById("attack").addEventListener("click", function() {
 
     playerData["hp"] = 0;
     insertText("curenntEnemyHp", playerData["hp"]);
+    document.getElementById("curenntPlayerHpGaugeValue").style.width = "0%";
   }
 
   if (endGame) {

@@ -37,6 +37,18 @@ section h2 {
   margin-bottom: 20px;
 }
 
+.hpGauge {
+  border: 1px solid #777;
+  margin-top: 10px;
+}
+
+.hpGaugeValue {
+  height: 15px;
+  background-color: #6b1;
+  transition: .2s;
+  width: 100%;
+}
+
 .hp {
   display: flex;
   justify-content: center;
