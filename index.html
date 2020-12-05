@@ -18,7 +18,8 @@
         <div class="hpGaugeValue" id="curenntEnemyHpGaugeValue"></div>
       </div>
       <div class="hp">
-        <div id="curenntEnemyHp"></div><div id="maxEnamyHp"></div>
+        <div id="curenntEnemyHp"></div>
+        <div id="maxEnamyHp"></div>
       </div>
     </section>
 
@@ -29,7 +30,14 @@
         <div class="hpGaugeValue" id="curenntPlayerHpGaugeValue"></div>
       </div>
       <div class="hp">
-      <div id="curenntPlayerHp"></div><div id="maxPlayerHp"></div>
+        <div id="curenntPlayerHp"></div>
+        <div id="maxPlayerHp"></div>
+      </div>
+
+      <div class="playerStatus">
+        <div class="killedNumbers">
+          討伐数：<div id="nowKilledNumber"></div><div id="targetKillsNumber"></div>
+        </div>
       </div>
 
       <ul id="logs" class="logs"></ul>
@@ -37,5 +45,11 @@
       <button id="attack" class="attack">攻撃する</button>
     </section>
   </main>
+
+  <div class="mask" id="mask"></div>
+  <div class="modal" id="modal">
+    <h2 class="modalTitle" id="modalTitle"></h2>
+    <a class="modalNextButton" id="modalNextButton">次へ</a>
+  </div>
 </body>
 </html>
