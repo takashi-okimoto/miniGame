@@ -5,7 +5,7 @@ let logIndex = 0,
     targetKillNumber = 2;
 
 const playerData = {
-  name: "勇者Takahiko",
+  name: "勇者",
   hp: 100,
   attack: 5,
   defence: 2
