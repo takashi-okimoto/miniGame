@@ -5,7 +5,7 @@ let logIndex = 0,
     targetKillNumber = 2;
 
 const playerData = {
-  name: "勇者",
+  name: "You",
   hp: 100,
   attack: 5,
   defence: 2
@@ -149,7 +149,7 @@ document.getElementById("attack").addEventListener("click", function() {
     insertText("nowKilledNumber", nowKilledNumber);
 
     if (nowKilledNumber === targetKillNumber) {
-      showModal("Congratulaaation!!", true);
+      showModal("YouWin!!", true);
     }
   }
 });
